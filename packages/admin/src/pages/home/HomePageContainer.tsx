@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { MessageOutlined, CodeSandboxOutlined } from '@ant-design/icons'
 import { Layout, Space, Button, Skeleton, Tooltip, Popover } from 'antd'
 import AvatarDropdown from '@/components/AvatarDropdown'
-import { getCmsConfig } from '@/utils'
+import { cmsConfig, getCmsConfig } from '@/utils'
 import Notice from './Notice'
 import pkg from '../../../package.json'
 import './index.less'
@@ -46,7 +46,7 @@ const HomePageContainer: React.FC<{ loading: boolean; isMobile?: boolean }> = ({
               />
             </Tooltip>
           )}
-          {window.TcbCmsConfig.disableNotice ? null : <Notice />}
+          {cmsConfig.disableNotice ? null : <Notice />}
           <AvatarDropdown />
         </div>
       </Header>
@@ -68,7 +68,7 @@ const HomePageContainer: React.FC<{ loading: boolean; isMobile?: boolean }> = ({
 
       {/* 悬浮按钮 */}
       <HelpButton>
-        {window.TcbCmsConfig.disableHelpButton ? null : (
+        {cmsConfig.disableHelpButton ? null : (
           <Popover
             placement="topLeft"
             title="帮助"

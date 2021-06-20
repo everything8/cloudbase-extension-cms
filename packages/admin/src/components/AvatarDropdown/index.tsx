@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons'
 import { Avatar, Menu, Spin, message, Dropdown } from 'antd'
 import { history, useModel, useAccess } from 'umi'
-import { getCloudBaseApp, getPageQuery, logout } from '@/utils'
+import { getPageQuery, logout } from '@/utils'
 
 import { stringify } from 'querystring'
 import styles from './index.less'
@@ -15,9 +15,6 @@ export interface GlobalHeaderRightProps {
  * 退出登录，并且将当前的 url 保存
  */
 const loginOut = async () => {
-  const app: any = await getCloudBaseApp()
-
-  console.log(app)
 
   // 退出登录
   await logout()

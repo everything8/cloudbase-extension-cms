@@ -19,7 +19,7 @@ import {
 } from 'antd'
 import { useConcent } from 'concent'
 import { ContentCtx, GlobalCtx } from 'typings/store'
-import { copyToClipboard, getProjectId } from '@/utils'
+import { cmsConfig, copyToClipboard, getProjectId } from '@/utils'
 import { CopyOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 
 const { Text } = Typography
@@ -28,7 +28,7 @@ const ApiAccessPath: React.FC<{ project: Project; onReload: Function }> = ({
   project,
   onReload,
 }) => {
-  const accessDomain = window.TcbCmsConfig.cloudAccessPath.replace('tcb-ext-cms-service', '')
+  const accessDomain = cmsConfig.cloudAccessPath.replace('tcb-ext-cms-service', '')
   const projectId = getProjectId()
   const [state, setState] = useSetState({
     apiPath: '',
@@ -163,7 +163,7 @@ const ApiPermission: React.FC<{ project: Project; onReload: Function }> = ({
 }) => {
   const ctx = useConcent<{}, GlobalCtx>('global')
   const { setting } = ctx.state
-  const accessDomain = window.TcbCmsConfig.cloudAccessPath.replace(/(tcb|wx)-ext-cms-service/, '')
+  const accessDomain = cmsConfig.cloudAccessPath.replace(/(tcb|wx)-ext-cms-service/, '')
 
   const projectId = getProjectId()
   // 使用 content module 的数据，获取 layout 时，必然被加载、刷新

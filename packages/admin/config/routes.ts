@@ -29,11 +29,6 @@ const routesConfig: IConfig = {
           path: '/settings/role/edit',
           component: './system-setting/RoleManagement/RoleEditor/index',
         },
-        {
-          exact: true,
-          path: '/settings/microapp/edit',
-          component: './system-setting/MicroApp/MicroAppEditor',
-        },
       ],
     },
     {
@@ -78,11 +73,6 @@ const routesConfig: IConfig = {
           routes: [
             {
               exact: true,
-              path: '/project/content/migrate',
-              component: './project/migrate',
-            },
-            {
-              exact: true,
               path: '/project/content/:schemaId',
               component: './project/content/index',
             },
@@ -97,57 +87,6 @@ const routesConfig: IConfig = {
           ],
         },
         {
-          path: '/project/operation',
-          name: '营销工具',
-          icon: 'shopping',
-          access: 'canOperation',
-          wrappers: ['../components/SecurityWrapper/index'],
-          routes: [
-            {
-              exact: true,
-              path: '/project/operation/activity',
-              component: './project/operation/Activity/index',
-            },
-            {
-              exact: true,
-              path: '/project/operation/activity/edit',
-              component: './project/operation/Activity/ActivityEditor',
-            },
-            {
-              exact: true,
-              path: '/project/operation/message',
-              component: './project/operation/Message/index',
-            },
-            {
-              exact: true,
-              path: '/project/operation/analytics',
-              component: './project/operation/Analytics/index',
-            },
-            {
-              exact: true,
-              path: '/project/operation/message/create',
-              component: './project/operation/Message/TaskCreator',
-            },
-            {
-              exact: true,
-              path: '/project/operation/message/result',
-              component: './project/operation/Message/TaskResult',
-            },
-            {
-              component: './project/operation/index',
-            },
-          ],
-        },
-        {
-          exact: true,
-          path: '/project/webhook',
-          name: 'Webhook',
-          icon: 'deployment-unit',
-          access: 'canWebhook',
-          wrappers: ['../components/SecurityWrapper/index'],
-          component: './project/webhook/index',
-        },
-        {
           exact: true,
           path: '/project/setting',
           name: '项目设置',
@@ -155,10 +94,6 @@ const routesConfig: IConfig = {
           access: 'isAdmin',
           wrappers: ['../components/SecurityWrapper/index'],
           component: './project/setting/index',
-        },
-        // 所有的微应用
-        {
-          component: './project/microapp/index',
         },
       ],
     },

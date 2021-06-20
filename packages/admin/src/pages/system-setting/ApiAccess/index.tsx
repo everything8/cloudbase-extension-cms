@@ -16,7 +16,7 @@ import {
 } from 'antd'
 import { useConcent } from 'concent'
 import { GlobalCtx } from 'typings/store'
-import { copyToClipboard } from '@/utils'
+import { copyToClipboard, cmsConfig } from '@/utils'
 import { CopyTwoTone } from '@ant-design/icons'
 import { createApiAuthToken, deleteApiAuthToken } from '@/services/global'
 
@@ -38,7 +38,7 @@ const ApiAccessPath: React.FC = () => {
   const { setting } = ctx.state
   const [modal, contextHolder] = Modal.useModal()
 
-  const accessDomain = window.TcbCmsConfig.cloudAccessPath.replace('tcb-ext-cms-service', '')
+  const accessDomain = cmsConfig.cloudAccessPath.replace('tcb-ext-cms-service', '')
 
   // 修改 api 路径，保留原路径
   const [keepApiPath, setKeepApiPath] = useState(false)

@@ -4,7 +4,6 @@ import { getSchemas } from '@/services/schema'
 import { getProjects } from '@/services/project'
 import { Form, Space, Button, Select, Row, Col, message, Typography, Skeleton } from 'antd'
 import { PlusOutlined, DeleteTwoTone, QuestionCircleTwoTone } from '@ant-design/icons'
-import { getWebhooks } from '@/services/webhook'
 
 const { Text } = Typography
 
@@ -259,9 +258,6 @@ const ResourceSelect: React.FC<{
         case 'content':
           data = await getSchemas(projectId)
           break
-
-        case 'webhook':
-          data = await getWebhooks(projectId)
       }
 
       return data

@@ -1,5 +1,5 @@
 import request from 'umi-request'
-import { getAuthHeader, getHttpAccessPath, tcbRequest } from '@/utils'
+import { getAuthHeaderAsync, getHttpAccessPath, tcbRequest } from '@/utils'
 
 interface ApiRequestPayload {
   service: 'util' | 'file' | 'setting' | 'auth'
@@ -7,34 +7,31 @@ interface ApiRequestPayload {
   [key: string]: any
 }
 
-export const apiRequest = <T>(data: ApiRequestPayload) => {
-  return tcbRequest<T>('/', {
-    data,
-    method: 'POST',
-  })
-}
+// export const apiRequest = <T>(data: ApiRequestPayload) => {
+//   return tcbRequest<T>('/', {
+//     data,
+//     method: 'POST',
+//   })
+// }
 
 /**
  * 获取当前登录的用户信息
  * @param file
  */
 export async function getCurrentUser() {
-  return apiRequest<CurrentUser>({
-    service: 'auth',
-    action: 'getCurrentUser',
-  })
+  return tcbRequest<CurrentUser>('/currentUser')
 }
 
 /**
  * 上传文件到静态网站托管
  */
-export const uploadFilesToHosting = (file: File, filePath: string) => {
+export const uploadFilesToHosting = async (file: File, filePath: string) => {
   const formData = new FormData()
   formData.append('filePath', filePath)
   formData.append('file', file)
 
   const url = getHttpAccessPath()
-  const authHeader = getAuthHeader()
+  const authHeader = await getAuthHeaderAsync()
 
   return request(`${url}/upload/hosting`, {
     data: formData,

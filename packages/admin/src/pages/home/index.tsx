@@ -6,7 +6,7 @@ import { useLocalStorageState } from '@umijs/hooks'
 import { setTwoToneColor, AppstoreOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { Modal, Form, Input, Space, Button, message, Tooltip, Typography, Empty } from 'antd'
 import { getProjects, createProject } from '@/services/project'
-import { getPageQuery } from '@/utils'
+import { cmsConfig, getPageQuery } from '@/utils'
 import ProjectListView from './ProjectListView'
 import ProjectCardView from './ProjectCardView'
 import HomePageContainer from './HomePageContainer'
@@ -45,7 +45,7 @@ const Home: React.FC<RouteContextType> = (props) => {
   const { isMobile } = props
 
   // 项目分组
-  const { groups } = window.TcbCmsConfig
+  const { groups } = cmsConfig
   const { group } = getPageQuery()
   const { isAdmin } = useAccess()
   // 布局设置持久化到本地

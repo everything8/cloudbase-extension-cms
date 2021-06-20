@@ -18,7 +18,8 @@ export default {
   pwa: false,
   iconfontUrl: '',
   // 请求 prefix
-  globalPrefix: '/api/v1.0',
+  // globalPrefix: '/api/v1.0',
+  globalPrefix: '/api',
 } as LayoutSettings & {
   pwa: boolean
   globalPrefix: string

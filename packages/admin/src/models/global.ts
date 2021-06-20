@@ -1,5 +1,5 @@
-import { createApiAuthToken, getSetting, updateSetting } from '@/services/global'
-import { getCloudBaseApp } from '@/utils'
+import { getSetting, updateSetting } from '@/services/global'
+import { getLoginState } from '@/utils'
 
 interface GlobalState {
   /**
@@ -56,8 +56,8 @@ export default {
   init: async () => {
     try {
       // 校验是否登录
-      const app = await getCloudBaseApp()
-      const loginState = await app.auth({ persistence: 'local' }).getLoginState()
+      // const loginState = await app.auth({ persistence: 'local' }).getLoginState()
+      const loginState = await getLoginState()
       if (!loginState) return {}
 
       // 获取全局设置

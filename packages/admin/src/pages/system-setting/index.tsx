@@ -6,7 +6,6 @@ import { Space, Typography, Menu } from 'antd'
 import styled from 'styled-components'
 import UserManagement from './UserManagement'
 import RoleManagement from './RoleManagement'
-import MicroApp from './MicroApp'
 import CustomMenu from './CustomMenu'
 import SettingContainer from './SettingContainer'
 import ApiAccess from './ApiAccess'
@@ -24,7 +23,6 @@ const Container = styled(SettingContainer)`
 const TabMap = {
   user: <UserManagement />,
   role: <RoleManagement />,
-  microapp: <MicroApp />,
   custommenu: <CustomMenu />,
   api: <ApiAccess />,
 }

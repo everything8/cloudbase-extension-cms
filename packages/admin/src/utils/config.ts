@@ -12,5 +12,7 @@ const InnerDefaultValue: Partial<ITcbCmsConfing> = {
  */
 export const getCmsConfig = (key: keyof ITcbCmsConfing, defaultValue?: any) => {
   // 获取 CMS 配置
-  return window.TcbCmsConfig[key] || defaultValue || InnerDefaultValue[key] || ''
+  return defaultValue || InnerDefaultValue[key] || ''
 }
+
+export const cmsConfig = InnerDefaultValue;

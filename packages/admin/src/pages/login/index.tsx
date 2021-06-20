@@ -2,7 +2,7 @@ import { useModel, history } from 'umi'
 import React, { useState, useEffect } from 'react'
 import { LockTwoTone, UserOutlined } from '@ant-design/icons'
 import { Alert, message, Button, Spin, Card, Typography, Form, Input } from 'antd'
-import { getCmsConfig, getPageQuery, loginWithPassword } from '@/utils'
+import { cmsConfig, getCmsConfig, getPageQuery, loginWithPassword } from '@/utils'
 import Footer from '@/components/Footer'
 import { LoginParamsType } from '@/services/login'
 import styles from './index.less'
@@ -31,7 +31,7 @@ const replaceGoto = () => {
   const params = getPageQuery()
   let { redirect } = params as { redirect: string }
 
-  const historyType = window.TcbCmsConfig.history
+  const historyType = cmsConfig?.history || 'hash'
 
   if (redirect) {
     const redirectUrlParams = new URL(redirect)

@@ -14,6 +14,7 @@ const config: IConfig = {
     // 静态托管部署，需要使用 hash 模式
     type: 'hash',
   },
+  // webpack5:{},
   // 是否让生成的文件包含 hash 后缀
   hash: true,
   antd: {},

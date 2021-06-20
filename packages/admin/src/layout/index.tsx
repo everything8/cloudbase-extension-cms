@@ -16,7 +16,7 @@ import {
 } from '@ant-design/icons'
 import { useConcent } from 'concent'
 import { ContentCtx, GlobalCtx } from 'typings/store'
-import { getProjectId } from '@/utils'
+import { cmsConfig, getProjectId } from '@/utils'
 import defaultSettings from '../../config/defaultSettings'
 
 // 设置图标颜色
@@ -46,13 +46,6 @@ const defaultSystemMenuData: MenuDataItem[] = [
     children: [],
   },
   {
-    authority: 'canWebhook',
-    path: '/project/webhook',
-    name: 'Webhook',
-    icon: <RocketTwoTone />,
-    children: [],
-  },
-  {
     authority: 'isAdmin',
     path: '/project/setting',
     name: '项目设置',
@@ -71,7 +64,7 @@ const getSystemMenuInstance = () => {
   /**
    * 微信侧才支持发送短信的功能
    */
-  if (WX_MP || window.TcbCmsConfig.isMpEnv) {
+  if (WX_MP || cmsConfig.isMpEnv) {
     systemMenuData.splice(3, 0, {
       authority: 'canContent',
       path: '/project/operation',
@@ -123,7 +116,7 @@ const Layout: React.FC<any> = (props) => {
 
   // 添加菜单
   // 是否开启了营销工具
-  if (window.TcbCmsConfig.isMpEnv && setting?.enableOperation) {
+  if (cmsConfig.isMpEnv && setting?.enableOperation) {
     if (!systemMenuData[3].children?.length) {
       systemMenuData[3].children = [
         {
@@ -188,7 +181,7 @@ const Layout: React.FC<any> = (props) => {
 
           // 循环判断菜单是否存在，不存在则插入菜单
           // 保持菜单的原有顺序插入
-          const baseInsertIndex = WX_MP || window.TcbCmsConfig.isMpEnv ? 6 : 5
+          const baseInsertIndex = WX_MP || cmsConfig.isMpEnv ? 6 : 5
 
           customMenus
             .filter((menu) => {

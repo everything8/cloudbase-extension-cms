@@ -1,5 +1,5 @@
 import Plyr from 'plyr'
-import 'plyr/dist/plyr.css'
+// import 'plyr/dist/plyr.css'
 import { useSetState } from 'react-use'
 import React, { useEffect } from 'react'
 import { message, Modal, Spin, Tooltip, Typography } from 'antd'
